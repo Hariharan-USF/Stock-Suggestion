@@ -1,0 +1,46 @@
+﻿
+
+@model IEnumerable<IEXTrading.Models.CompanyQuote>
+
+@{
+    ViewData["Title"] = "Super Stock Suggestion";
+}
+
+<h2>Best Stock Suggestions</h2>
+
+<form action="SuperStockSuggestion" method="post"> 
+    Number of picks: 
+    <input type="number" name="picks" placeholder="No. of stock suggestions">
+    <br>
+    <button type="submit">Submit</button>
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Symbol
+            </th>
+            <th>
+                Value in %
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.symbol)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.calculatedValue)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

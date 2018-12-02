@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "AboutSuggestion";
+}
+
+<h2>Project Description</h2>
+
+<p>
+    <h2>Stock Picking Srategy </h2>We created a CompanyQuote class to store the data about the stocks which we got from the API.
+    We needed the class to store symbol, company name, close, week52High, week52Low for caluclating the stock evelauation parameter calculatedValue.
+    We were unable to get all the stocks we required in one shot from the companyList which retrieves symbols using GetSymbols function.
+    So we wrote GetCompanyQuote function in IEhandler to extract the symbols from the companyList, a batch of hundred symbols at time and fed it to the quoteList.
+    The quoteList is of the type CompanyQuote created to store the stock data.
+    We created a quoteDict to store the quote details of each stock which we got using the JsonConvert utility method.
+    From the quoteDict for each stock we extracted the quote value and stored it as a quoteList.This quote list is returned by the GetCompanyQuotes function.
+</p>
+
+<p>
+     The GetBest5Picks functions which calculates the top 5 picks uses the output of GetCompanyQuotes to get the quoteList for the companies which were extracted from the API.
+    The strategy for picking the stocks was got from <a href="https://www.aaii.com/journal/article/quantitative-strategies-for-selecting-stocks"> AAI journal </a> on quantitative strategies for selecting stocks
+    For each stock we calculaed a value using the formula current price minus 52-week low divided by 52-week high minus 52-week low.
+    Then the quote list was sorted in descending order and top 5 stocks along with the calculated values were displayed as output.
+    Stocks that score 82% or higher on this formula tend to outperform, while stocks that score 41% or lower tend to underperform.
+</p
+
+<p>
+    <h2>Usability and look and feel of the web application</h2>
+    To enhance the the usablity of the application, we have a added a feauture where the can user choose the number of suggestions required from the application.
+    This functionality betters caters to the user's needs than an applications which only picks top 5 stocks irrespective of the user requirements. 
+
+</p>
+
+<p>
+    <h2>Self-reflection</h2>
+    
+    1. Learnt to effectively use Git to manage our project.This not only helped in version control but also with sharing the code<br>
+    2. Learnt about how to extract data using REST API and how to manipulate the data we extracted.<br>
+    3. We also learnt about to how to handle user inputs and manipulate the input the customize the output.<br>
+    4. We extracted the parameters which we considered important for our stock picking calculation in the CompanyQuote class instead of storing everything that the API provides.<br>
+    5. We used breakpoints extensively in this project to verify our code at every point, to understand data flow between 
+        controller, view and the concept of model binding.We will use this as starting point and work on this project to implement better stock 
+        picking strategies in the future.<br>
+    
+</p>
+
+
+
+
